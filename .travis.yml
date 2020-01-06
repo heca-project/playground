@@ -6,7 +6,7 @@ before_install:
 addons:
   apt:
     packages: musl-tools xz-utils
-matrix:
+jobs:
   include:
   - os: linux
     rust: stable
@@ -20,13 +20,13 @@ matrix:
 script: cargo test --target "$TARGET" --target-dir=/tmp/heca
 before_deploy: "./ci/before_deploy.sh"
 deploy:
-  skip_cleanup: true
+  cleanup: false 
   file:
-  - "/tmp/heca-staging/heca-${TRAVIS_TAG}-${TARGET}"
-  - "/tmp/heca-staging/heca-${TRAVIS_TAG}-${TARGET}.xz"
+  - "/tmp/heca-staging/playground-${TRAVIS_TAG}-${TARGET}"
+  - "/tmp/heca-staging/playground-${TRAVIS_TAG}-${TARGET}.xz"
   provider: releases
   draft: false
   on:
     tags: true
-  api_key:
+  token:
     secure: m39UynKFHUEVpNieWlerUnX27PgXTwY4xbbjt5vxDCc8sidORMcyJCSCmqDVO9zf228mUdLxTnE6qHHrUoopdBmimHrfRuWNCflGCLg9488irHVei/34ECnRkrvFtdA7HsGa3WhQZX5kAljPnLFbbLjFNIKdn3cQdVcq602UNxdwQOmC1mUa22th9DDfVRwLeFyyxYtf1UhQgp4aylUBYUzrCiJF++KWG3CJhNyL2mpf+Dh0HO7dX6jPrC9/mNac4ySw/1iAm79B4pENd4t0tlJmle2sVdhYZZSlcFi+UxpXM+MD0eFXewGSslNMAt2qzvknrWsvut+8rbYEVX3HRUwhefQJ6M3lPBUVwkjPbj+MtzMTYHgVqi+MUems3jlr9fq0kTS+mvpcENDCZfFK+rfufv0koWJesPa6XPaGUFh7i2fMPAFJDZfxrmDaVF03lkrI2y0zxm16s/TVfAtbXBURn+bKw/KFh4NSgdyPokezs9SHsLLQO18UD7IhUmJCqyaJzjkWABcmFEw9+NGeVEorPeYhhjS/4PWy85caNTTT5f0yXK6xQkjEPj6c1j6NpXsBo9Lb4snzwaxeHFqz4dx8spwkcuV5AhefS5W9hVuANQ7j3CnupxECK9aCRgliVfd97G/b5L74M56ZFNo+X9xsdXos7Ld7F1QSTjVr2OE=
