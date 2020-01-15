@@ -79,7 +79,7 @@ fn test_molad() {
                 .parse()
                 .expect(&format!("{} {}", file!(), line!()));
 
-            eprintln!("{} {}", am, hour);
+            eprintln!("'{}' {}", caps.get(9).unwrap().as_str() , hour);
             let hour = if am { hour } else { hour + 12 };
             eprintln!("{} {}", am, hour);
 
