@@ -78,7 +78,10 @@ fn test_molad() {
                 .as_str()
                 .parse()
                 .expect(&format!("{} {}", file!(), line!()));
+
+            eprintln!("{} {}", am, hour);
             let hour = if am { hour } else { hour + 12 };
+            eprintln!("{} {}", am, hour);
 
             let day = Utc.ymd(year, month, day).and_hms(18, 0, 0) - Duration::days(1);
             Res {
