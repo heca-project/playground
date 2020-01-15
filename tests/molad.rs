@@ -28,7 +28,7 @@ fn test_molad() {
     )
     .expect(&format!("{} {}", file!(), line!()));
     let orig: Vec<Res> = include_str!("molad_1990_100")
-        .split('\n')
+        .lines()
         .filter(|x| x != &"")
         .map(|x| {
             eprintln!("{}", x);
