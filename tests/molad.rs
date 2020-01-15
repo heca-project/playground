@@ -98,6 +98,7 @@ fn test_molad() {
         line!()
     )))
     .expect(&format!("{} {}", file!(), line!()));
+    eprintln!("orig = {:?}", orig);
     eprintln!("res = {:?}", res);
 
     for r in res.iter().filter(|x| x.month != "Tishrei") {
