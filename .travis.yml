@@ -21,7 +21,7 @@ matrix:
     rust: stable
     env: TARGET=x86_64-pc-windows-gnu
 
-script: cargo test --target "$TARGET"
+script: cargo test --target "$TARGET" test_molad
 before_deploy: "./ci/before_deploy.sh"
 deploy:
   cleanup: false
